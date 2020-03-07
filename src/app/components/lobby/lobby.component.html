@@ -1,0 +1,16 @@
+<ng-container *ngIf="!(lobbyService.playerIsInLobby$ | async)">
+<label for="name">
+  Name:
+  <input type="text" name="name" [formControl]="name" (keydown.enter)="submitBtn.click()">
+</label>
+<button #submitBtn (click)="joinLobby()">Join lobby</button>
+</ng-container>
+
+<ng-container *ngIf="(lobbyService.playerIsInLobby$ | async)">
+  <table>
+    <tr *ngFor="let player of lobbyService.lobby$ | async">
+      <td>{{player}}</td>
+    </tr>
+  </table>
+</ng-container>
+

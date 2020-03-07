@@ -1,0 +1,14 @@
+Name: {{gameService.nickname}}
+On move: {{onMove}}
+<div id="ttt-wrapper">
+  <div id="ttt-board">
+    <ng-container *ngFor="let tile of tiles; let i = index">
+      <div class="ttt-tile">
+        <div class="ttt-tile__empty selectable" (click)="selectTile(i)" *ngIf="tile.isEmpty() && canPerformAction()"></div>
+        <div class="ttt-tile__empty" *ngIf="tile.isEmpty() && !canPerformAction()"></div>
+        <div class="ttt-tile__cross" *ngIf="tile.isCross()"></div>
+        <div class="ttt-tile__circle" *ngIf="tile.isCircle()"></div>
+      </div>
+    </ng-container>
+  </div>
+</div>
